@@ -7,14 +7,14 @@ import javax.persistence.Id;
 @Entity(name = "Orders")
 public class Order {
 
+    public Order() {
+    }
+
     public Order(Long id, Long customerId, Double amount, String channel) {
         this.id = id;
         this.customerId = customerId;
         this.amount = amount;
         this.channel = channel;
-    }
-
-    public Order() {
     }
 
     @Id

@@ -163,7 +163,13 @@
             <version>1.16.12</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>2.0.0</version>
+        </dependency>
     </dependencies>
+
 
 
     <build>
@@ -187,6 +193,7 @@
                 <version>${apt-maven-plugin.version}</version>
                 <executions>
                     <execution>
+                        <id>JPA Model Generation</id>
                         <goals>
                             <goal>process</goal>
                         </goals>
@@ -195,8 +202,19 @@
                             <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                         </configuration>
                     </execution>
+                    <!--<execution>
+                        <id>Mongo Model Generation</id>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/java</outputDirectory>
+                            <processor>com.mysema.query.apt.morphia.MorphiaAnnotationProcessor</processor>
+                        </configuration>
+                    </execution>-->
                 </executions>
             </plugin>
+
             <!--<plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
