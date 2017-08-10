@@ -1,8 +1,7 @@
 package org.sai.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity(name = "Orders")
 public class Order {
@@ -28,6 +27,10 @@ public class Order {
 
     @Column
     private String channel;
+
+    @Column
+    @Temporal(value = TemporalType.TIME)
+    private Date dateTime = new Date();
 
     public Long getId() {
         return id;

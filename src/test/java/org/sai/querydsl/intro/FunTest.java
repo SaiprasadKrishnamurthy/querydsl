@@ -4,7 +4,6 @@
 package org.sai.querydsl.intro;
 
 import com.querydsl.core.Tuple;
-import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.core.types.dsl.NumberPath;
 import org.junit.AfterClass;
@@ -28,6 +27,7 @@ import static org.junit.Assert.*;
 
 /**
  * A Simple way to test our scenarios.
+ *
  * @author sai kris
  */
 public class FunTest {
@@ -143,19 +143,6 @@ public class FunTest {
                 .fetch();
         assertTrue(customers.size() > 0);
     }
-
-    @Test
-    public void mongoJoin() {
-        QCustomer customerModel = QCustomer.customer;
-        QOrder orderModel = QOrder.order;
-        MongoQueryTemplate<Customer, QCustomer> mongoQueryTemplate = new MongoQueryTemplate<>(DatasourceManager.morphia, DatasourceManager.datastore);
-        List<Customer> customers = mongoQueryTemplate.query(customerModel)
-                .join(customerModel.id, orderModel.customerId)
-                .on(customerModel.city.isNotNull())
-                .fetch();
-        System.out.println(customers);
-    }
-
 
     @AfterClass
     public static void teardown() {
